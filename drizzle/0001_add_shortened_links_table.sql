@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS "shortened_links" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "user_id" integer NOT NULL,
+  "short_code" text NOT NULL,
+  "original_url" text NOT NULL,
+  "title" text,
+  "description" text,
+  "metadata" json,
+  "qr_code" text,
+  "created_at" timestamp DEFAULT now(),
+  "updated_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
+CREATE UNIQUE INDEX "shortened_links_short_code_idx" ON "shortened_links" ("short_code");
+--> statement-breakpoint
+CREATE INDEX "shortened_links_user_id_idx" ON "shortened_links" ("user_id");
+--> statement-breakpoint
+ALTER TABLE "shortened_links" ADD CONSTRAINT "shortened_links_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE cascade ON UPDATE cascade;
