@@ -2,6 +2,7 @@
 
 Hi-Links is a modern URL shortener built with Next.js, Clerk authentication, Neon Postgres, and Drizzle ORM. It lets users create short links, track click analytics, toggle link activity, and manage their links from a polished dashboard.
 
+See the Demo here: hilinks.vercel.app
 ## Features
 
 - Create and manage shortened links
